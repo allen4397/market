@@ -42,4 +42,12 @@ class Market
     end
     return inventory
   end
+
+  def sell(item, quantity)
+    enough?(item, quantity)
+  end
+
+  def enough?(item, quantity)
+    total_inventory[item] > quantity
+  end
 end
