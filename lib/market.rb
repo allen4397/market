@@ -57,5 +57,17 @@ class Market
   end
 
   def remove_items(item, quantity)
+    while quantity != 0
+      vendor_with_item = @vendors.find do |vendor|
+        vendor.inventory[item] != 0
+      end
+      if vendor_with_item.inventory[item] > quantity
+        vendor_with_item.inventory[item] -= quantity
+        quantity = 0
+      else
+        quantity -= vendor_with_item.inventory[item]
+        vendor_with_item.inventory[item] = 0
+      end
+    end
   end
 end
