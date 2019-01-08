@@ -44,7 +44,12 @@ class Market
   end
 
   def sell(item, quantity)
-    enough?(item, quantity)
+    if enough?(item, quantity)
+      remove_items(item, quantity)
+      true
+    else
+      false
+    end
   end
 
   def enough?(item, quantity)
