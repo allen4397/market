@@ -60,4 +60,18 @@ class VendorTest < Minitest::Test
 
     assert_equal expected, vendor.inventory
   end
+
+  def test_it_can_sell_out
+    vendor = Vendor.new("Rocky Mountain Fresh")
+    vendor.stock("Peaches", 30)
+    vendor.stock("Peaches", 25)
+    vendor.stock("Tomatoes", 12)
+    vendor.remove_items("Peaches", 35)
+
+    vendor.sell_out("Tomatoes")
+
+    expected = {"Peaches"=>20, "Tomatoes"=>0}
+
+    assert_equal expected, vendor.inventory
+  end
 end

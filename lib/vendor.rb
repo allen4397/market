@@ -18,4 +18,8 @@ class Vendor
   def remove_items(item, quantity)
     @inventory[item] -= quantity
   end
+
+  def sell_out(item)
+    @inventory[item] = 0
+  end
 end
