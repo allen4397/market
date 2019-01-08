@@ -55,4 +55,7 @@ class Market
   def enough?(item, quantity)
     total_inventory[item] > quantity
   end
+
+  def remove_items(item, quantity)
+  end
 end
