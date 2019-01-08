@@ -14,4 +14,8 @@ class Vendor
   def stock(item, quantity)
     @inventory[item] += quantity
   end
+
+  def remove_items(item, quantity)
+    @inventory[item] -= quantity
+  end
 end
