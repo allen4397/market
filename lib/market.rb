@@ -22,4 +22,24 @@ class Market
       vendor.check_stock(item) != 0
     end
   end
+
+  def sorted_item_list
+    items = []
+    @vendors.each do |vendor|
+      vendor.inventory.each do |item, quantity|
+        items << item unless items.include?(item)
+      end
+    end
+    items.sort
+  end
+
+  def total_inventory
+    inventory = Hash.new(0)
+    @vendors.each do |vendor|
+      vendor.inventory.each do |item, quantity|
+        inventory[item] += quantity
+      end
+    end
+    return inventory
+  end
 end
